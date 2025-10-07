@@ -1,0 +1,60 @@
+.login-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.header .logo {
+  width: 100px;
+}
+
+.login-form {
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #2E1F6F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.forgot-password {
+  display: block;
+  margin-top: 10px;
+  color: #4b0082;
+  text-decoration: none;
+}
+
+.footer {
+  background-color: #800000;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+}
