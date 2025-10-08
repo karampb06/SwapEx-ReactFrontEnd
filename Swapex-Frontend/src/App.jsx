@@ -1,9 +1,14 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {SignupPage} from './pages/signup_page.jsx';
+
 function App() {
   return (
-    <>
-      <h1>This is new project</h1>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App
