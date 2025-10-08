@@ -3,6 +3,8 @@ import axios from 'axios';
 import logo from '../assets/logo.png';
 import styles from './signup_page.module.css';
 import '../index.css'; // Import global styles
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const SignupPage = () => {
     const [form, setForm] = useState({
@@ -45,11 +47,12 @@ export const SignupPage = () => {
         setErrors(validationErrors);
         if (Object.keys(validationErrors).length === 0) {
             setLoading(true);
+            toast.info('Signing up...', { position: "top-center", autoClose: 2000, hideProgressBar: true});
             setSuccess('');
             try {
                 // Prepare form data for file upload
                 const formData = new FormData();
-                formData.append('full_name', form.name);
+                formData.append('first_name', form.name); 
                 formData.append('email', form.email);
                 formData.append('password', form.password);
                 formData.append('phone_number', form.phone);
@@ -62,6 +65,7 @@ export const SignupPage = () => {
                     },
                 });
 
+                toast.success('Signup successful!', { position: "top-center",hideProgressBar: true});
                 setSuccess('Signup successful!');
                 setForm({
                     name: '',
@@ -73,6 +77,7 @@ export const SignupPage = () => {
                 });
                 setPreview(null);
             } catch (error) {
+                toast.error('Signup failed!', { position: "top-center",hideProgressBar: true});
                 console.log(error.response);
                 setErrors({ api: error.response?.data?.message || 'Signup failed. Please try again.' });
             } finally {
@@ -83,6 +88,7 @@ export const SignupPage = () => {
 
     return (
         <div className={styles.container}>
+            <ToastContainer />
             <img src={logo} alt="Logo" className={styles.logo} />
             <h2 className={styles.heading}>Sign Up</h2>
             <form onSubmit={handleSubmit}>
@@ -158,8 +164,8 @@ export const SignupPage = () => {
                 {errors.api && <div style={{color: 'red', marginBottom: 8}}>{errors.api}</div>}
                 {success && <div style={{color: 'green', marginBottom: 8}}>{success}</div>}
                 <div className={styles.formGroup}>
-                    <button type="submit" className={styles.button} disabled={loading}>
-                        {loading ? 'Signing Up...' : 'Sign Up'}
+                    <button type="submit" className={styles.button} >
+                        Sign Up
                     </button>
                 </div>
             </form>
